@@ -9,6 +9,18 @@ It ships design tokens *and* ready-made component classes, so you can consume it
 - **With Tailwind v4** — the tokens feed Tailwind's utilities (`bg-background`, `text-primary`, `font-heading`, `shadow-md`, …).
 - **Without any build** — the tokens and component classes (`.blueprint`, `.btn`, `.card`, `.tag`, …) are plain CSS. Just link the stylesheet.
 
+## Documentation
+
+Full docs live in [`docs/`](./docs/index.md):
+
+- [Getting started](./docs/getting-started.md) — install & the three ways to consume it
+- [Design principles](./docs/design-principles.md) — the rules the system enforces
+- [Tokens](./docs/tokens.md) — the full colour, type, radius & shadow reference
+- [Components](./docs/components.md) — every class, modifier & markup example
+- [Theming](./docs/theming.md) — white-label brand colours, the dark shell & print
+
+This README is the quick tour; the pages above are the reference.
+
 ---
 
 ## Install
@@ -274,6 +286,22 @@ Open `demo/index.html` in a browser — it links the library source directly, so
 
 **Don't** reintroduce rounding on framed elements; give cards a fill or shadow (they're line drawings); add colour beyond the steel accent; or drop the corner marks from a blueprint element.
 
+See the full [design principles](./docs/design-principles.md).
+
 ---
 
-*Extracted from the BluClutch app's design system (`design.md`). Tokens mirror the app so the two stay visually identical.*
+## Browser support
+
+Modern evergreen browsers. The system uses `color-mix()`, cascade layers (`@layer`) and `:focus-visible` — Chrome/Edge 111+, Firefox 113+, Safari 16.2+.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md). In short: plain CSS (no `@apply`), read from tokens, hold the square/monochrome identity, and document + changelog every addition.
+
+## License
+
+[MIT](./LICENSE) © 2026 BluClutch.
+
+---
+
+*Extracted from the BluClutch app's design system (`design.md`). The app and library are kept independent; the tokens mirror the app so the two stay visually identical.*

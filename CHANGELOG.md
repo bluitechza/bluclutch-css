@@ -14,6 +14,7 @@ follows [Keep a Changelog](https://keepachangelog.com); versions follow semver.
 - **White-label theming:** `[data-brand]` / `[data-brand-accent]` scopes (`src/branding.css`) so a school's custom brand colour re-accents the system — backs the Professional plan feature.
 - **Print:** `@media print` receipt/document layer (`src/print.css`) with `.receipt`, `.no-print`, `.print-only`.
 - **DX:** `tokens.json` (Style Dictionary / Figma-syncable), `LICENSE` (MIT), this changelog, and `build.mjs` → `dist/bluclutch.css` + `dist/bluclutch.min.css` (framework-free bundle for CDN use).
+- **Docs:** a `docs/` reference (getting-started, design-principles, tokens, components, theming) and `CONTRIBUTING.md`; README expanded with a documentation index, browser support and license.
 
 ## [0.1.0] — 2026-08-26
 
