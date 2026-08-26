@@ -23,6 +23,30 @@ This README is the quick tour; the pages above are the reference.
 
 ---
 
+## Palette
+
+Monochrome by design — one steel accent on a light technical ground.
+
+| | Token | Hex | Role |
+| :---: | --- | --- | --- |
+| ![](https://placehold.co/44x22/f2f2f3/f2f2f3.png) | `--background` | `#f2f2f3` | the technical ground |
+| ![](https://placehold.co/44x22/e9e9ea/e9e9ea.png) | `--surface` | `#e9e9ea` | one step up — menus, dialogs |
+| ![](https://placehold.co/44x22/1d1f20/1d1f20.png) | `--foreground` | `#1d1f20` | ink |
+| ![](https://placehold.co/44x22/7a7a7d/7a7a7d.png) | `--muted-foreground` | `#7a7a7d` | meta text |
+| ![](https://placehold.co/44x22/d0d0d1/d0d0d1.png) | `--border` | `#d0d0d1` | the hairline |
+| ![](https://placehold.co/44x22/5980a6/5980a6.png) | `--primary` / `--ring` | `#5980a6` | the steel accent — the one solid object |
+
+**Accent ramp** — walk this for data-viz; never leave the steel:
+
+| ![](https://placehold.co/48x28/eef6ff/eef6ff.png) | ![](https://placehold.co/48x28/b5d9fd/b5d9fd.png) | ![](https://placehold.co/48x28/94bce3/94bce3.png) | ![](https://placehold.co/48x28/749dc4/749dc4.png) | ![](https://placehold.co/48x28/5980a6/5980a6.png) | ![](https://placehold.co/48x28/416180/416180.png) | ![](https://placehold.co/48x28/2c455d/2c455d.png) | ![](https://placehold.co/48x28/1d2d3d/1d2d3d.png) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `100` | `200` | `300` | `400` | `500` | `700` | `800` | `900` |
+| `#eef6ff` | `#b5d9fd` | `#94bce3` | `#749dc4` | `#5980a6` | `#416180` | `#2c455d` | `#1d2d3d` |
+
+`--accent-900` (`#1d2d3d`) is the ground of the dark internal shell. Danger stays monochrome — `--destructive` is `#2c455d` (accent-800), never red. See [tokens](./docs/tokens.md).
+
+---
+
 ## Install
 
 ```bash
