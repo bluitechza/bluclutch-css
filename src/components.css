@@ -1,0 +1,255 @@
+/* Industry components. Square, hairline, one steel accent. Every class reads
+   from the tokens in theme.css, so they follow light/dark and any retheme.
+   Kept as plain CSS (no @apply) so the library also works without Tailwind. */
+
+@layer components {
+    /* Eyebrow — the uppercase tracked label above headings, used across the app */
+    .eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--primary);
+    }
+
+    /* Button — variant="default" is the one solid object; use --outline for
+       most secondary actions, reserve the fill for the single primary. */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 2.5rem;
+        padding: 0 1.25rem;
+        font-family: var(--font-heading);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 0;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+    .btn:disabled,
+    .btn[disabled],
+    .btn[aria-disabled='true'] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    .btn:active:not([aria-haspopup]) {
+        transform: translateY(1px);
+    }
+
+    .btn--primary {
+        background: var(--primary);
+        color: var(--primary-foreground);
+    }
+    .btn--primary:hover {
+        background: color-mix(in srgb, var(--primary) 88%, #000);
+    }
+
+    .btn--outline {
+        background: transparent;
+        color: var(--foreground);
+        border-color: var(--border);
+    }
+    .btn--outline:hover {
+        background: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    .btn--secondary {
+        background: var(--secondary);
+        color: var(--secondary-foreground);
+    }
+    .btn--secondary:hover {
+        background: color-mix(in srgb, var(--secondary) 92%, var(--foreground));
+    }
+
+    .btn--ghost {
+        background: transparent;
+        color: var(--primary);
+    }
+    .btn--ghost:hover {
+        background: var(--accent);
+        color: var(--accent-foreground);
+    }
+
+    .btn--link {
+        height: auto;
+        padding: 0;
+        background: transparent;
+        color: var(--primary);
+        text-underline-offset: 4px;
+    }
+    .btn--link:hover {
+        text-decoration: underline;
+    }
+
+    .btn--sm {
+        height: 2rem;
+        padding: 0 0.875rem;
+        font-size: 0.8125rem;
+    }
+    .btn--lg {
+        height: 3rem;
+        padding: 0 2rem;
+        font-size: 1rem;
+    }
+    .btn--icon {
+        width: 2.5rem;
+        padding: 0;
+    }
+    .btn--block {
+        width: 100%;
+    }
+
+    /* Tag — the Industry badge. Accent for attention, neutral for steady
+       states, outline for backgrounded / off states. */
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.15rem 0.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        line-height: 1.4;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border: 1px solid transparent;
+        border-radius: 0;
+    }
+    .tag--accent {
+        background: var(--accent);
+        color: var(--accent-foreground);
+    }
+    .tag--neutral {
+        background: var(--secondary);
+        color: var(--secondary-foreground);
+    }
+    .tag--outline {
+        background: transparent;
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+    /* Card — a line drawing, not a filled surface. No shadow. Compose with
+       .blueprint for the framed look. */
+    .card {
+        background: transparent;
+        color: var(--card-foreground);
+        border: 1px solid var(--border);
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1.5rem;
+    }
+    .card__title {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+    }
+    .card__meta {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+    }
+
+    /* Form controls — square, accent focus ring. Add .input--filled to sit
+       the field on the surface. */
+    .field-label {
+        display: block;
+        margin-bottom: 0.375rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--foreground);
+    }
+    .input,
+    .select,
+    .textarea {
+        display: block;
+        width: 100%;
+        height: 2.5rem;
+        padding: 0 0.75rem;
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        color: var(--foreground);
+        background: var(--background);
+        border: 1px solid var(--input);
+        border-radius: 0;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .textarea {
+        height: auto;
+        min-height: 6rem;
+        padding: 0.5rem 0.75rem;
+        line-height: 1.5;
+    }
+    .input::placeholder,
+    .textarea::placeholder {
+        color: var(--muted-foreground);
+    }
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+        outline: none;
+        border-color: var(--ring);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent);
+    }
+    .input--filled {
+        background: var(--muted);
+    }
+
+    /* Table — restate the header in the Industry voice. */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+    }
+    .table th {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted-foreground);
+        border-bottom: 1px solid var(--border);
+    }
+    .table td {
+        padding: 0.75rem 1rem;
+        color: var(--foreground);
+        border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    }
+
+    /* Tabs / active nav — a 2px accent bottom border, not a filled pill. */
+    .tab {
+        display: inline-flex;
+        align-items: center;
+        height: 2.5rem;
+        padding: 0 0.25rem;
+        margin-right: 1.5rem;
+        font-family: var(--font-heading);
+        font-size: 0.9375rem;
+        color: var(--muted-foreground);
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+    }
+    .tab:hover {
+        color: var(--foreground);
+    }
+    .tab--active {
+        color: var(--accent-foreground);
+        border-bottom-color: var(--primary);
+    }
+}

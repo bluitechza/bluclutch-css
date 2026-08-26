@@ -1,0 +1,169 @@
+/* Industry / BluClutch — design tokens
+   Steel-blue accent on a light technical ground. Barlow Condensed over Barlow,
+   square corners, hairline borders, a single steel accent. Monochrome by design.
+
+   :root  = the light theme (school-admin & learner shells)
+   .dark  = the internal / application shell (accent-900 ground = "BluClutch staff") */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+:root {
+    --radius: 0rem; /* square — the whole identity */
+
+    /* ground + ink */
+    --background: #f2f2f3;
+    --foreground: #1d1f20;
+    --surface: #e9e9ea;
+    --card: #f2f2f3; /* cards stay transparent line-drawings */
+    --card-foreground: #1d1f20;
+    --popover: #e9e9ea;
+    --popover-foreground: #1d1f20;
+
+    /* the one solid object */
+    --primary: #5980a6;
+    --primary-foreground: #f2f2f3;
+
+    --secondary: #e9e9ea;
+    --secondary-foreground: #1d1f20;
+    --muted: #e9e9ea;
+    --muted-foreground: #7a7a7d;
+    --accent: #eef6ff;
+    --accent-foreground: #2c455d;
+
+    /* monochrome system: no red. Deep accent carries danger. */
+    --destructive: #2c455d;
+    --destructive-foreground: #f2f2f3;
+
+    --border: #d0d0d1;
+    --input: #d0d0d1;
+    --ring: #5980a6;
+
+    /* accent ramp — walk this for data viz, never leave the steel */
+    --accent-100: #eef6ff;
+    --accent-200: #b5d9fd;
+    --accent-300: #94bce3;
+    --accent-400: #749dc4;
+    --accent-500: #5980a6;
+    --accent-700: #416180;
+    --accent-800: #2c455d;
+    --accent-900: #1d2d3d;
+
+    --chart-1: #749dc4;
+    --chart-2: #597ea3;
+    --chart-3: #416180;
+    --chart-4: #94bce3;
+    --chart-5: #2c455d;
+
+    /* left rail (school-admin shell) */
+    --sidebar: #f2f2f3;
+    --sidebar-foreground: #1d1f20;
+    --sidebar-primary: #5980a6;
+    --sidebar-primary-foreground: #f2f2f3;
+    --sidebar-accent: #eef6ff;
+    --sidebar-accent-foreground: #2c455d;
+    --sidebar-border: #d0d0d1;
+    --sidebar-ring: #5980a6;
+
+    --font-sans: 'Barlow', system-ui, sans-serif;
+    --font-heading: 'Barlow Condensed', system-ui, sans-serif;
+
+    /* elevation — ink-tinted, tuned to the light ground */
+    --shadow-sm: 0 1px 2px rgb(43 43 45 / 0.14);
+    --shadow-md: 0 3px 10px rgb(43 43 45 / 0.16);
+    --shadow-lg: 0 12px 32px rgb(43 43 45 / 0.22);
+}
+
+.dark {
+    /* internal / application shell — accent-900 ground, paper type */
+    --background: #1d2d3d;
+    --foreground: #f2f2f3;
+    --surface: #2c455d;
+    --card: #1d2d3d;
+    --card-foreground: #f2f2f3;
+    --popover: #2c455d;
+    --popover-foreground: #f2f2f3;
+    --primary: #5980a6;
+    --primary-foreground: #f2f2f3;
+    --secondary: #2c455d;
+    --secondary-foreground: #f2f2f3;
+    --muted: #2c455d;
+    --muted-foreground: #9ebbd8;
+    --accent: #2c455d;
+    --accent-foreground: #f2f2f3;
+    --destructive: #b5d9fd;
+    --destructive-foreground: #1d2d3d;
+    --border: #34465a;
+    --input: #34465a;
+    --ring: #749dc4;
+    --sidebar: #1d2d3d;
+    --sidebar-foreground: #f2f2f3;
+    --sidebar-primary: #5980a6;
+    --sidebar-primary-foreground: #f2f2f3;
+    --sidebar-accent: #2c455d;
+    --sidebar-accent-foreground: #f2f2f3;
+    --sidebar-border: #34465a;
+    --sidebar-ring: #749dc4;
+}
+
+/* Map Tailwind's token names onto the vars above so utilities
+   (bg-background, text-primary, font-heading, shadow-md, …) render Industry.
+   Unknown to a plain browser — safely ignored there; the :root vars still resolve. */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-surface: var(--surface);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-accent-100: var(--accent-100);
+    --color-accent-200: var(--accent-200);
+    --color-accent-300: var(--accent-300);
+    --color-accent-400: var(--accent-400);
+    --color-accent-500: var(--accent-500);
+    --color-accent-700: var(--accent-700);
+    --color-accent-800: var(--accent-800);
+    --color-accent-900: var(--accent-900);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --font-sans: var(--font-sans);
+    --font-heading: var(--font-heading);
+
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+    --radius-xl: 0px;
+    --radius-2xl: 0px;
+
+    --shadow-sm: var(--shadow-sm);
+    --shadow-md: var(--shadow-md);
+    --shadow-lg: var(--shadow-lg);
+}

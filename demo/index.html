@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bluclutch-css — Industry / BluClutch design system</title>
+
+    <!-- Link the library source directly. No build step: the tokens and
+         component classes are plain CSS. In a real Tailwind v4 app you'd
+         `@import "bluclutch-css"` after `@import "tailwindcss"` instead. -->
+    <link rel="stylesheet" href="../src/index.css" />
+
+    <style>
+        /* Demo-only layout scaffolding (not part of the library). */
+        body { margin: 0; }
+        .wrap { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem; }
+        .shell + .shell { border-top: 1px solid var(--border); }
+        .lede { max-width: 40rem; }
+        .lede h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 0.95; margin: 0.75rem 0 0; }
+        .lede p { color: var(--muted-foreground); font-size: 1.125rem; line-height: 1.6; }
+        section { margin-top: 3.5rem; }
+        h2.section-title { font-size: 1.75rem; margin: 0 0 1.5rem; }
+        .row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+        .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+        .stack > * + * { margin-top: 0.75rem; }
+        .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.75rem; }
+        .swatch { border: 1px solid var(--border); }
+        .swatch .chip { height: 3.5rem; }
+        .swatch .label { padding: 0.5rem 0.625rem; font-size: 0.75rem; }
+        .swatch .label b { display: block; font-weight: 600; }
+        .swatch .label span { color: var(--muted-foreground); font-family: var(--font-heading); }
+        .field { max-width: 20rem; }
+    </style>
+</head>
+<body>
+    <!-- ── Light shell: school-admin / learner ──────────────────────────── -->
+    <div class="shell">
+        <div class="wrap">
+            <div class="lede">
+                <p class="eyebrow">bluclutch-css · component gallery</p>
+                <h1>Steel on a technical ground.</h1>
+                <p>
+                    The Industry / BluClutch design system, as a Tailwind v4 preset. Square corners,
+                    hairline borders, Barlow Condensed over Barlow, and a single steel accent.
+                </p>
+            </div>
+
+            <section>
+                <h2 class="section-title">Palette</h2>
+                <div class="swatches">
+                    <div class="swatch"><div class="chip" style="background: var(--background)"></div><div class="label"><b>Ground</b><span>#f2f2f3</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--surface)"></div><div class="label"><b>Surface</b><span>#e9e9ea</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--foreground)"></div><div class="label"><b>Ink</b><span>#1d1f20</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--primary)"></div><div class="label"><b>Accent</b><span>#5980a6</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--accent-800)"></div><div class="label"><b>Accent 800</b><span>#2c455d</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--accent-900)"></div><div class="label"><b>Accent 900</b><span>#1d2d3d</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--accent-100)"></div><div class="label"><b>Accent 100</b><span>#eef6ff</span></div></div>
+                    <div class="swatch"><div class="chip" style="background: var(--border)"></div><div class="label"><b>Hairline</b><span>#d0d0d1</span></div></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Buttons</h2>
+                <div class="row">
+                    <span class="blueprint" style="display:inline-flex"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><button class="btn btn--primary">Register your school</button></span>
+                    <button class="btn btn--outline">Secondary</button>
+                    <button class="btn btn--ghost">Ghost</button>
+                    <button class="btn btn--secondary">Neutral</button>
+                    <a href="#" class="btn btn--link">Learn more</a>
+                    <button class="btn btn--outline" disabled>Disabled</button>
+                </div>
+                <div class="row" style="margin-top: 1rem">
+                    <button class="btn btn--primary btn--sm">Small</button>
+                    <button class="btn btn--primary">Default</button>
+                    <button class="btn btn--primary btn--lg">Large</button>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Tags</h2>
+                <div class="row">
+                    <span class="tag tag--accent">Trial ending</span>
+                    <span class="tag tag--neutral">Active</span>
+                    <span class="tag tag--outline">Archived</span>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Cards &amp; the blueprint frame</h2>
+                <div class="grid">
+                    <div class="blueprint" style="padding: 1.5rem">
+                        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                        <p class="eyebrow">Learners</p>
+                        <h3 class="card__title" style="margin:.5rem 0">Learner journey tracking</h3>
+                        <p class="card__meta">Nine stages on one enrolment record, from first lesson to licence.</p>
+                    </div>
+                    <div class="card">
+                        <p class="eyebrow">Fleet</p>
+                        <h3 class="card__title" style="margin:.5rem 0">Vehicle &amp; maintenance</h3>
+                        <p class="card__meta">A plain line-drawing card — no fill, no shadow.</p>
+                    </div>
+                    <div class="blueprint" style="padding: 1.5rem; background: var(--accent-100)">
+                        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                        <span class="tag tag--outline">Most popular</span>
+                        <h3 class="card__title" style="margin:.75rem 0 .25rem">Growth</h3>
+                        <p class="card__meta">R649 <span style="opacity:.6">/mo</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Form controls</h2>
+                <div class="field stack">
+                    <div>
+                        <label class="field-label" for="school">School name</label>
+                        <input class="input" id="school" placeholder="Sandton Driving Academy" />
+                    </div>
+                    <div>
+                        <label class="field-label" for="notes">Notes</label>
+                        <textarea class="textarea" id="notes" placeholder="Anything we should know…"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Tabs</h2>
+                <div class="row" style="border-bottom: 1px solid var(--border); gap: 0">
+                    <button class="tab tab--active">Overview</button>
+                    <button class="tab">Learners</button>
+                    <button class="tab">Billing</button>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Table</h2>
+                <table class="table">
+                    <thead>
+                        <tr><th>Learner</th><th>Stage</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Thabo M.</td><td>Driving test</td><td><span class="tag tag--accent">Test booked</span></td></tr>
+                        <tr><td>Aisha K.</td><td>Lessons</td><td><span class="tag tag--neutral">Active</span></td></tr>
+                        <tr><td>Sipho D.</td><td>Learner's licence</td><td><span class="tag tag--outline">Paused</span></td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <!-- ── Dark shell: the internal / application (BluClutch staff) ──────── -->
+    <div class="shell dark" style="background: var(--background); color: var(--foreground)">
+        <div class="wrap">
+            <div class="lede">
+                <p class="eyebrow">Internal shell · <code>.dark</code></p>
+                <h1>The application ground.</h1>
+                <p>Wrap a layout in <code>.dark</code> to render it on the accent-900 bar — the cue that a screen belongs to BluClutch staff, not a school.</p>
+            </div>
+            <section>
+                <div class="row">
+                    <button class="btn btn--primary">Approve application</button>
+                    <button class="btn btn--outline">Request changes</button>
+                    <span class="tag tag--accent">Pending review</span>
+                </div>
+            </section>
+            <section>
+                <div class="blueprint" style="padding: 1.5rem; max-width: 22rem">
+                    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                    <p class="eyebrow">Applications</p>
+                    <h3 class="card__title" style="margin:.5rem 0">12 awaiting review</h3>
+                    <p class="card__meta">The frame and its registration marks carry into the dark shell unchanged.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

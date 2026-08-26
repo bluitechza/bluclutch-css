@@ -1,0 +1,18 @@
+/* bluclutch-css — the Industry / BluClutch design system as a Tailwind v4 preset.
+
+   In a Tailwind v4 project:
+
+       @import "tailwindcss";
+       @import "bluclutch-css";
+
+   Order matters: import after Tailwind so the tokens feed its utilities
+   (bg-background, text-primary, font-heading, …) and the component layer
+   can be overridden by utilities.
+
+   No Tailwind? Link src/index.css directly — the tokens and component
+   classes (.blueprint, .btn, .card, .tag, …) are plain CSS and still work. */
+
+@import './theme.css';
+@import './base.css';
+@import './blueprint.css';
+@import './components.css';

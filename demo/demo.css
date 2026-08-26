@@ -1,0 +1,8 @@
+/* Optional: compile a real Tailwind build of the demo to demo/demo.build.css
+   with `npm run build:demo`. Proves the preset drives Tailwind utilities.
+   Not needed to view the gallery — demo/index.html links the source directly. */
+
+@import "tailwindcss";
+@import "../src/index.css";
+
+@source "./index.html";
