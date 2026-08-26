@@ -9,10 +9,17 @@
    (bg-background, text-primary, font-heading, …) and the component layer
    can be overridden by utilities.
 
-   No Tailwind? Link src/index.css directly — the tokens and component
-   classes (.blueprint, .btn, .card, .tag, …) are plain CSS and still work. */
+   No Tailwind? Link src/index.css (or dist/bluclutch.css) directly — the
+   tokens and component classes are plain CSS and still work. */
 
 @import './theme.css';
 @import './base.css';
+@import './branding.css';
 @import './blueprint.css';
 @import './components.css';
+@import './forms.css';
+@import './feedback.css';
+@import './navigation.css';
+@import './overlays.css';
+@import './data-display.css';
+@import './print.css';

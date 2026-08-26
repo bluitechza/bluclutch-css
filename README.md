@@ -141,6 +141,92 @@ Sizes: `.btn--sm`, `.btn--lg`, `.btn--icon`, `.btn--block`.
 
 Plus `.eyebrow` — the uppercase tracked label above headings, used across the app.
 
+### Selection controls
+
+```html
+<div class="segmented">                              <!-- the Monthly/Annual toggle -->
+  <button class="segmented__option" aria-selected="false">Monthly</button>
+  <button class="segmented__option" aria-selected="true">Annual</button>
+</div>
+
+<label class="switch">
+  <input type="checkbox" />
+  <span class="switch__track"><span class="switch__thumb"></span></span>
+</label>
+
+<input class="checkbox" type="checkbox" />
+<input class="radio" type="radio" />
+```
+
+### Feedback
+
+```html
+<div class="alert alert--accent"><div>
+  <p class="alert__title">Trial ending</p>
+  <p class="alert__body">Add a payment method to stay active.</p>
+</div></div>                                          <!-- also --danger, --muted -->
+
+<div class="empty"><p class="empty__title">No learners yet</p>…</div>
+
+<div class="skeleton skeleton--title"></div>         <!-- also --text, --block -->
+
+<button class="tooltip" data-tooltip="Explains this action">Advanced export</button>
+```
+
+### Navigation
+
+```html
+<nav class="breadcrumb"><a href="#">Learners</a><span class="breadcrumb__sep">/</span><span aria-current="page">Thabo M.</span></nav>
+
+<nav class="pagination"><a href="#" aria-current="page">1</a><a href="#">2</a><a href="#">3</a></nav>
+
+<div class="menu">
+  <p class="menu__label">Learner</p>
+  <button class="menu__item">View profile</button>
+  <div class="menu__sep"></div>
+  <button class="menu__item">Suspend</button>
+</div>
+```
+
+### Overlays
+
+```html
+<div class="overlay-backdrop"></div>
+<div class="dialog">
+  <p class="dialog__title">Cancel subscription?</p>
+  <p class="dialog__desc">You'll keep access until the period ends.</p>
+  <div class="dialog__footer">…buttons…</div>
+</div>
+
+<aside class="sheet">…</aside>                        <!-- add .sheet--left for a left panel -->
+```
+
+### Data display
+
+```html
+<div class="stat">
+  <p class="stat__label">Active learners</p>
+  <p class="stat__value">248</p>
+  <p class="stat__delta stat__delta--up">▲ 12 this month</p>
+</div>
+
+<div class="avatar-group"><span class="avatar">TM</span><span class="avatar">AK</span></div>
+
+<span class="status status--active">Active</span>   <!-- also --attention, --off -->
+
+<div class="progress"><div class="progress__bar" style="width:62%"></div></div>
+```
+
+The **journey stepper** — mark stages `--done` / `--current`:
+
+```html
+<div class="stepper">
+  <div class="step step--done"><span class="step__marker">✓</span><span class="step__label">Enrolled</span></div>
+  <div class="step step--current"><span class="step__marker">3</span><span class="step__label">Learner's test</span></div>
+  <div class="step"><span class="step__marker">4</span><span class="step__label">Driving test</span></div>
+</div>
+```
+
 ---
 
 ## The dark shell
@@ -154,6 +240,27 @@ Plus `.eyebrow` — the uppercase tracked label above headings, used across the 
 ```
 
 ---
+
+## White-label theming
+
+The Professional plan's **custom brand colour** is just a scoped token override. Set `--brand-primary` on any wrapper and every component (and Tailwind utility) re-accents — hovers included:
+
+```html
+<div data-brand style="--brand-primary: #b0413e">
+  …this school's UI, re-accented…
+</div>
+```
+
+Unset, it falls back to the steel accent. Use `data-brand-accent` with `--brand-accent` / `--brand-accent-foreground` for the hover-tint pair. See `src/branding.css`.
+
+## Print
+
+`src/print.css` adds an ink-on-paper `@media print` layer for receipts and documents: `.no-print` hides chrome, `.print-only` reveals print-only nodes, and `.receipt` / `.receipt__header` / `.receipt__total` lay out a branded receipt.
+
+## Tokens & bundle
+
+- `tokens.json` — the palette, type, radius and shadow tokens in **Style Dictionary** format, ready to sync to Figma or feed other platforms.
+- `npm run build` (`build.mjs`, no dependencies) bundles `src/` into `dist/bluclutch.css` and a minified `dist/bluclutch.min.css` — a framework-free single file for CDN or non-Tailwind use.
 
 ## Demo
 

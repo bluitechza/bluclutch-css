@@ -1,0 +1,56 @@
+/* Print — receipts & documents. Ink on paper, chrome hidden, blueprint marks
+   kept. Add .no-print to hide chrome, .print-only to reveal print-only nodes,
+   and use the .receipt helpers for a branded receipt layout. */
+
+.print-only {
+    display: none;
+}
+
+@media print {
+    :root {
+        --background: #ffffff;
+        --foreground: #000000;
+        --border: #000000;
+        --muted-foreground: #333333;
+    }
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+    .no-print,
+    nav,
+    aside,
+    .sidebar {
+        display: none !important;
+    }
+    .print-only {
+        display: block !important;
+    }
+    .card,
+    .blueprint,
+    .table,
+    .receipt {
+        break-inside: avoid;
+    }
+    a[href]::after {
+        content: '';
+    }
+
+    .receipt {
+        max-width: 100%;
+        font-size: 12px;
+        color: #000;
+    }
+    .receipt__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #000;
+    }
+    .receipt__total {
+        padding-top: 0.5rem;
+        border-top: 2px solid #000;
+        font-weight: 700;
+    }
+}

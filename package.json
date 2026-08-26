@@ -1,6 +1,6 @@
 {
   "name": "bluclutch-css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The Industry / BluClutch design system as a Tailwind v4 preset — steel-blue accent on a light technical ground, Barlow Condensed over Barlow, square corners, hairline borders, and the signature blueprint frame.",
   "license": "MIT",
   "main": "./src/index.css",
@@ -10,11 +10,20 @@
     "./theme": "./src/theme.css",
     "./base": "./src/base.css",
     "./blueprint": "./src/blueprint.css",
-    "./components": "./src/components.css"
+    "./components": "./src/components.css",
+    "./branding": "./src/branding.css",
+    "./print": "./src/print.css",
+    "./tokens.json": "./tokens.json",
+    "./dist": "./dist/bluclutch.css",
+    "./dist/min": "./dist/bluclutch.min.css"
   },
   "files": [
     "src",
-    "README.md"
+    "dist",
+    "tokens.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "sideEffects": [
     "*.css"
@@ -31,6 +40,7 @@
     "industry"
   ],
   "scripts": {
+    "build": "node build.mjs",
     "build:demo": "tailwindcss -i ./demo/demo.css -o ./demo/demo.build.css --minify"
   },
   "devDependencies": {

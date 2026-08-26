@@ -1,0 +1,56 @@
+/* Overlays — dialog / modal and side sheet. Top elevation: the one place a
+   soft surface is allowed. Kept square. Pair with .overlay-backdrop. */
+
+@layer components {
+    .overlay-backdrop {
+        position: fixed;
+        inset: 0;
+        background: color-mix(in srgb, #1d2d3d 55%, transparent);
+    }
+
+    .dialog {
+        width: 100%;
+        max-width: 32rem;
+        padding: 1.5rem;
+        background: var(--popover);
+        color: var(--popover-foreground);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+    }
+    .dialog__title {
+        font-family: var(--font-heading);
+        font-size: 1.375rem;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+    }
+    .dialog__desc {
+        margin-top: 0.25rem;
+        font-size: 0.9375rem;
+        color: var(--muted-foreground);
+    }
+    .dialog__footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .sheet {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: min(24rem, 90vw);
+        padding: 1.5rem;
+        background: var(--popover);
+        color: var(--popover-foreground);
+        border-left: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+    }
+    .sheet--left {
+        right: auto;
+        left: 0;
+        border-left: 0;
+        border-right: 1px solid var(--border);
+    }
+}

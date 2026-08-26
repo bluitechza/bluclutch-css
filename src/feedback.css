@@ -1,0 +1,117 @@
+/* Feedback — alert/callout, empty state, skeleton loaders, tooltip.
+   Monochrome: "danger" is the deep accent, never red. */
+
+@layer components {
+    .alert {
+        display: flex;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
+        background: var(--surface);
+        color: var(--foreground);
+        border: 1px solid var(--border);
+        border-left-width: 3px;
+        font-size: 0.9375rem;
+    }
+    .alert__title {
+        font-family: var(--font-heading);
+        font-weight: 600;
+    }
+    .alert__body {
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+    }
+    .alert--accent {
+        background: var(--accent);
+        color: var(--accent-foreground);
+        border-left-color: var(--primary);
+    }
+    .alert--accent .alert__body {
+        color: var(--accent-foreground);
+    }
+    .alert--danger {
+        border-left-color: var(--destructive);
+    }
+    .alert--muted {
+        border-left-color: var(--muted-foreground);
+    }
+
+    /* Empty state — dashed frame, quiet ink */
+    .empty {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        color: var(--muted-foreground);
+        border: 1px dashed var(--border);
+    }
+    .empty__title {
+        margin: 0.5rem 0;
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        color: var(--foreground);
+    }
+
+    /* Skeleton loader */
+    .skeleton {
+        position: relative;
+        overflow: hidden;
+        background: color-mix(in srgb, var(--foreground) 8%, var(--surface));
+    }
+    .skeleton::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            color-mix(in srgb, var(--background) 60%, transparent),
+            transparent
+        );
+        animation: bc-skeleton 1.4s infinite;
+    }
+    .skeleton--text {
+        height: 0.75rem;
+    }
+    .skeleton--title {
+        height: 1.25rem;
+    }
+    .skeleton--block {
+        height: 6rem;
+    }
+    @keyframes bc-skeleton {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    /* Tooltip — CSS-only, driven by a data-tooltip attribute */
+    .tooltip {
+        position: relative;
+    }
+    .tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, -4px);
+        padding: 0.25rem 0.5rem;
+        background: var(--popover);
+        color: var(--popover-foreground);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.12s ease;
+    }
+    .tooltip:hover::after,
+    .tooltip:focus-visible::after {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton::after {
+        animation: none;
+    }
+}

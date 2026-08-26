@@ -1,0 +1,105 @@
+/* Navigation — breadcrumbs, pagination, dropdown menu. */
+
+@layer components {
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+    }
+    .breadcrumb a {
+        color: var(--muted-foreground);
+        text-decoration: none;
+    }
+    .breadcrumb a:hover {
+        color: var(--foreground);
+    }
+    .breadcrumb__sep {
+        color: var(--border);
+    }
+    .breadcrumb [aria-current='page'] {
+        color: var(--foreground);
+    }
+
+    /* Pagination — hairline segmented control, matches Laravel's paginator markup */
+    .pagination {
+        display: inline-flex;
+        border: 1px solid var(--border);
+    }
+    .pagination a,
+    .pagination span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.25rem;
+        height: 2.25rem;
+        padding: 0 0.5rem;
+        font-family: var(--font-heading);
+        font-size: 0.875rem;
+        color: var(--foreground);
+        text-decoration: none;
+        background: transparent;
+        border-right: 1px solid var(--border);
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .pagination a:last-child,
+    .pagination span:last-child {
+        border-right: 0;
+    }
+    .pagination a:hover {
+        background: var(--accent);
+        color: var(--accent-foreground);
+    }
+    .pagination [aria-current='page'] {
+        background: var(--primary);
+        color: var(--primary-foreground);
+    }
+    .pagination .is-disabled {
+        color: var(--muted-foreground);
+        pointer-events: none;
+    }
+
+    /* Dropdown menu — sits at popover elevation */
+    .menu {
+        min-width: 12rem;
+        padding: 0.25rem;
+        background: var(--popover);
+        color: var(--popover-foreground);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+    }
+    .menu__label {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted-foreground);
+    }
+    .menu__item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.45rem 0.6rem;
+        font-size: 0.875rem;
+        color: var(--popover-foreground);
+        text-align: left;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+    .menu__item:hover,
+    .menu__item:focus-visible {
+        background: var(--accent);
+        color: var(--accent-foreground);
+        outline: none;
+    }
+    .menu__sep {
+        height: 1px;
+        margin: 0.25rem 0;
+        background: var(--border);
+    }
+}

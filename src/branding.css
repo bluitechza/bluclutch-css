@@ -1,0 +1,26 @@
+/* White-label theming — backs the Professional plan's "custom brand colour".
+
+   Set a school's brand colour on any scope and it cascades to component
+   classes AND Tailwind utilities (both resolve var(--primary) at the point of
+   use). Derived hovers come free via the color-mix in the components.
+
+       <div data-brand style="--brand-primary: #b0413e">
+         …this school's UI, re-accented…
+       </div>
+
+   Falls back to the steel accent when --brand-primary is unset. */
+
+@layer base {
+    [data-brand] {
+        --primary: var(--brand-primary, #5980a6);
+        --ring: var(--brand-primary, #5980a6);
+        --sidebar-primary: var(--brand-primary, #5980a6);
+        --sidebar-ring: var(--brand-primary, #5980a6);
+    }
+    [data-brand-accent] {
+        --accent: var(--brand-accent, #eef6ff);
+        --accent-foreground: var(--brand-accent-foreground, #2c455d);
+        --sidebar-accent: var(--brand-accent, #eef6ff);
+        --sidebar-accent-foreground: var(--brand-accent-foreground, #2c455d);
+    }
+}

@@ -144,6 +144,148 @@
                     </tbody>
                 </table>
             </section>
+
+            <section>
+                <h2 class="section-title">Selection controls</h2>
+                <div class="row" style="gap: 2rem">
+                    <div class="segmented" role="tablist" aria-label="Billing period">
+                        <button class="segmented__option" aria-selected="false">Monthly</button>
+                        <button class="segmented__option" aria-selected="true">Annual · Save 10%</button>
+                    </div>
+                    <label class="switch"><input type="checkbox" checked /><span class="switch__track"><span class="switch__thumb"></span></span></label>
+                    <label class="row" style="gap: 0.5rem; cursor: pointer"><input class="checkbox" type="checkbox" checked /> Digital receipts</label>
+                    <label class="row" style="gap: 0.5rem; cursor: pointer"><input class="radio" type="radio" name="pay" checked /> Card</label>
+                    <label class="row" style="gap: 0.5rem; cursor: pointer"><input class="radio" type="radio" name="pay" /> Instant EFT</label>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Alerts</h2>
+                <div class="stack" style="max-width: 38rem">
+                    <div class="alert alert--accent"><div><p class="alert__title">Trial ending in 3 days</p><p class="alert__body">Add a payment method to keep your school active.</p></div></div>
+                    <div class="alert alert--danger"><div><p class="alert__title">Application needs changes</p><p class="alert__body">The platform team requested updates to your documents.</p></div></div>
+                    <div class="alert alert--muted"><div><p class="alert__body">Reports refresh nightly. Last run 02:00 SAST.</p></div></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Dashboard stats</h2>
+                <div class="grid">
+                    <div class="stat"><p class="stat__label">Active learners</p><p class="stat__value">248</p><p class="stat__delta stat__delta--up">▲ 12 this month</p></div>
+                    <div class="stat"><p class="stat__label">Lessons this week</p><p class="stat__value">86</p><p class="stat__delta">across 3 branches</p></div>
+                    <div class="stat"><p class="stat__label">Awaiting review</p><p class="stat__value">12</p><p class="stat__delta">applications</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">People &amp; status</h2>
+                <div class="row" style="gap: 2rem">
+                    <div class="avatar-group">
+                        <span class="avatar">TM</span><span class="avatar">AK</span><span class="avatar">SD</span>
+                        <span class="avatar" style="background: var(--primary); color: var(--primary-foreground); border-color: var(--primary)">+5</span>
+                    </div>
+                    <span class="status status--active">Active</span>
+                    <span class="status status--attention">Test booked</span>
+                    <span class="status status--off">Paused</span>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Learner journey</h2>
+                <div class="stepper">
+                    <div class="step step--done"><span class="step__marker">✓</span><span class="step__label">Enrolled</span></div>
+                    <div class="step step--done"><span class="step__marker">✓</span><span class="step__label">Lessons</span></div>
+                    <div class="step step--current"><span class="step__marker">3</span><span class="step__label">Learner's test</span></div>
+                    <div class="step"><span class="step__marker">4</span><span class="step__label">Driving lessons</span></div>
+                    <div class="step"><span class="step__marker">5</span><span class="step__label">Driving test</span></div>
+                    <div class="step"><span class="step__marker">6</span><span class="step__label">Licensed</span></div>
+                </div>
+                <div style="margin-top: 2rem; max-width: 24rem">
+                    <div class="row" style="justify-content: space-between; margin-bottom: 0.4rem">
+                        <span class="stat__label">Course progress</span><span class="stat__label">62%</span>
+                    </div>
+                    <div class="progress"><div class="progress__bar" style="width: 62%"></div></div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Navigation</h2>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="#">Learners</a><span class="breadcrumb__sep">/</span>
+                    <a href="#">Thabo M.</a><span class="breadcrumb__sep">/</span>
+                    <span aria-current="page">Licensing</span>
+                </nav>
+                <div class="row" style="margin-top: 1.5rem; align-items: flex-start; gap: 2rem">
+                    <nav class="pagination" aria-label="Pagination">
+                        <span class="is-disabled">‹</span><a href="#" aria-current="page">1</a><a href="#">2</a><a href="#">3</a><a href="#">›</a>
+                    </nav>
+                    <div class="menu">
+                        <p class="menu__label">Learner</p>
+                        <button class="menu__item">View profile</button>
+                        <button class="menu__item">Book a lesson</button>
+                        <div class="menu__sep"></div>
+                        <button class="menu__item">Suspend</button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Dialog &amp; tooltip</h2>
+                <div class="row" style="align-items: flex-start; gap: 2rem">
+                    <div class="dialog" style="position: static">
+                        <p class="dialog__title">Cancel subscription?</p>
+                        <p class="dialog__desc">You'll keep access until the end of your paid period.</p>
+                        <div class="dialog__footer">
+                            <button class="btn btn--outline">Keep plan</button>
+                            <button class="btn btn--primary">Cancel plan</button>
+                        </div>
+                    </div>
+                    <button class="btn btn--outline tooltip" data-tooltip="Exports every learner's record as CSV">Advanced export</button>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">White-label — same components, a school's brand colour</h2>
+                <div class="grid">
+                    <div data-brand style="--brand-primary: #b0413e; padding: 1.5rem; border: 1px solid var(--border)">
+                        <span class="tag tag--outline">Rooikardt Rywskool</span>
+                        <div class="row" style="margin-top: 1rem">
+                            <button class="btn btn--primary">Primary</button>
+                            <button class="btn btn--outline">Outline</button>
+                            <span class="status status--active">Active</span>
+                        </div>
+                        <div class="progress" style="margin-top: 1rem"><div class="progress__bar" style="width: 70%"></div></div>
+                    </div>
+                    <div data-brand style="--brand-primary: #2e7d5b; padding: 1.5rem; border: 1px solid var(--border)">
+                        <span class="tag tag--outline">Green Route Academy</span>
+                        <div class="row" style="margin-top: 1rem">
+                            <button class="btn btn--primary">Primary</button>
+                            <button class="btn btn--outline">Outline</button>
+                            <span class="status status--active">Active</span>
+                        </div>
+                        <div class="progress" style="margin-top: 1rem"><div class="progress__bar" style="width: 45%"></div></div>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border)">
+                        <span class="tag tag--outline">BluClutch default</span>
+                        <div class="row" style="margin-top: 1rem">
+                            <button class="btn btn--primary">Primary</button>
+                            <button class="btn btn--outline">Outline</button>
+                            <span class="status status--active">Active</span>
+                        </div>
+                        <div class="progress" style="margin-top: 1rem"><div class="progress__bar" style="width: 88%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Loading state</h2>
+                <div class="card" style="max-width: 22rem">
+                    <div class="skeleton skeleton--title" style="width: 60%"></div>
+                    <div class="skeleton skeleton--text" style="width: 100%; margin-top: 0.75rem"></div>
+                    <div class="skeleton skeleton--text" style="width: 80%; margin-top: 0.5rem"></div>
+                    <div class="skeleton skeleton--block" style="margin-top: 1rem"></div>
+                </div>
+            </section>
         </div>
     </div>
 

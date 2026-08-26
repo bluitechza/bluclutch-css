@@ -1,0 +1,165 @@
+/* Data display — stat/KPI card, avatar, status dot, progress bar, and the
+   learner journey stepper. */
+
+@layer components {
+    /* Stat / KPI card — for the platform + school dashboards */
+    .stat {
+        padding: 1.25rem 1.5rem;
+        background: transparent;
+        border: 1px solid var(--border);
+    }
+    .stat__label {
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--muted-foreground);
+    }
+    .stat__value {
+        margin-top: 0.35rem;
+        font-family: var(--font-heading);
+        font-size: 2.25rem;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+    .stat__delta {
+        margin-top: 0.25rem;
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+    }
+    .stat__delta--up {
+        color: var(--primary);
+    }
+
+    /* Avatar / initials */
+    .avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        overflow: hidden;
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--foreground);
+        background: var(--surface);
+        border: 1px solid var(--border);
+    }
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .avatar--sm {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.75rem;
+    }
+    .avatar--lg {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.125rem;
+    }
+    .avatar-group {
+        display: inline-flex;
+    }
+    .avatar-group .avatar + .avatar {
+        margin-left: -0.5rem;
+    }
+
+    /* Status dot — lightweight companion to .tag for table status cells */
+    .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8125rem;
+        color: var(--foreground);
+    }
+    .status::before {
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--muted-foreground);
+    }
+    .status--active::before {
+        background: var(--primary);
+    }
+    .status--attention::before {
+        background: var(--accent-800);
+    }
+    .status--off::before {
+        background: var(--border);
+    }
+
+    /* Progress bar */
+    .progress {
+        height: 0.5rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+    }
+    .progress__bar {
+        height: 100%;
+        background: var(--primary);
+    }
+
+    /* Stepper — the nine-stage learner journey */
+    .stepper {
+        display: flex;
+        align-items: flex-start;
+    }
+    .step {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .step__marker {
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        font-family: var(--font-heading);
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+        background: var(--background);
+        border: 1px solid var(--border);
+    }
+    .step__label {
+        max-width: 7rem;
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+    }
+    .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: calc(0.875rem - 0.5px);
+        left: 50%;
+        width: 100%;
+        height: 1px;
+        background: var(--border);
+    }
+    .step--done .step__marker {
+        color: var(--primary-foreground);
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+    .step--done:not(:last-child)::after {
+        background: var(--primary);
+    }
+    .step--current .step__marker {
+        color: var(--primary);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 25%, transparent);
+    }
+    .step--current .step__label {
+        color: var(--foreground);
+        font-weight: 500;
+    }
+}
