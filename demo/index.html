@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>bluclutch-css — Industry / BluClutch design system</title>
 
+    <!-- Apply the saved theme before first paint to avoid a flash. No stored
+         choice = no attribute, so the CSS follows the OS (prefers-color-scheme). -->
+    <script>
+        (function () {
+            var t = localStorage.getItem('bcc-theme');
+            if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+        })();
+    </script>
+
     <!-- Link the library source directly. No build step: the tokens and
          component classes are plain CSS. In a real Tailwind v4 app you'd
          `@import "bluclutch-css"` after `@import "tailwindcss"` instead. -->
@@ -33,6 +42,14 @@
     </style>
 </head>
 <body>
+    <!-- ── Colour-theme switcher (demo chrome, built from .segmented) ────── -->
+    <div class="segmented" role="group" aria-label="Colour theme" id="theme-switch"
+         style="position: fixed; top: 1rem; right: 1rem; z-index: 50; box-shadow: var(--shadow-md)">
+        <button class="segmented__option" data-theme-choice="light">Light</button>
+        <button class="segmented__option" data-theme-choice="dark">Dark</button>
+        <button class="segmented__option" data-theme-choice="auto">Auto</button>
+    </div>
+
     <!-- ── Light shell: school-admin / learner ──────────────────────────── -->
     <div class="shell">
         <div class="wrap">
@@ -99,7 +116,7 @@
                         <h3 class="card__title" style="margin:.5rem 0">Vehicle &amp; maintenance</h3>
                         <p class="card__meta">A plain line-drawing card — no fill, no shadow.</p>
                     </div>
-                    <div class="blueprint" style="padding: 1.5rem; background: var(--accent-100)">
+                    <div class="blueprint" style="padding: 1.5rem; background: var(--accent); color: var(--accent-foreground)">
                         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
                         <span class="tag tag--outline">Most popular</span>
                         <h3 class="card__title" style="margin:.75rem 0 .25rem">Growth</h3>
@@ -314,5 +331,34 @@
             </section>
         </div>
     </div>
+
+    <!-- Wire the switcher: 'auto' clears the attribute (CSS follows the OS),
+         'light'/'dark' force a choice. The choice persists in localStorage. -->
+    <script>
+        (function () {
+            var group = document.getElementById('theme-switch');
+            var options = group.querySelectorAll('[data-theme-choice]');
+
+            function apply(choice) {
+                if (choice === 'light' || choice === 'dark') {
+                    document.documentElement.dataset.theme = choice;
+                    localStorage.setItem('bcc-theme', choice);
+                } else {
+                    delete document.documentElement.dataset.theme;
+                    localStorage.removeItem('bcc-theme');
+                }
+                options.forEach(function (btn) {
+                    btn.setAttribute('aria-selected', String(btn.dataset.themeChoice === choice));
+                });
+            }
+
+            group.addEventListener('click', function (e) {
+                var btn = e.target.closest('[data-theme-choice]');
+                if (btn) apply(btn.dataset.themeChoice);
+            });
+
+            apply(localStorage.getItem('bcc-theme') || 'auto');
+        })();
+    </script>
 </body>
 </html>

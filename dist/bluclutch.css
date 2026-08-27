@@ -18,11 +18,15 @@
    Steel-blue accent on a light technical ground. Barlow Condensed over Barlow,
    square corners, hairline borders, a single steel accent. Monochrome by design.
 
-   :root  = the light theme (school-admin & learner shells)
-   .dark  = the internal / application shell (accent-900 ground = "BluClutch staff") */
+   :root                = the light theme (school-admin & learner shells)
+   [data-theme="dark"]  = the user-facing dark mode (follows the OS by default)
+   .dark                = the internal / application shell (accent-900 ground =
+                          "BluClutch staff"). Its own concept, not the toggle —
+                          it just happens to share the same accent-900 palette. */
 
 
 :root {
+    color-scheme: light;
     --radius: 0rem; /* square — the whole identity */
 
     /* ground + ink */
@@ -88,8 +92,14 @@
     --shadow-lg: 0 12px 32px rgb(43 43 45 / 0.22);
 }
 
-.dark {
-    /* internal / application shell — accent-900 ground, paper type */
+/* The accent-900 dark palette, shared by every dark trigger:
+     .dark                — the internal / staff application shell (unchanged)
+     [data-theme="dark"]  — the user-facing dark-mode toggle
+     prefers-color-scheme — the OS preference (see the @media block below)
+   Change a value here and all three stay in step. */
+.dark,
+[data-theme='dark'] {
+    color-scheme: dark;
     --background: #1d2d3d;
     --foreground: #f2f2f3;
     --surface: #2c455d;
@@ -118,6 +128,43 @@
     --sidebar-accent-foreground: #f2f2f3;
     --sidebar-border: #34465a;
     --sidebar-ring: #749dc4;
+}
+
+/* Follow the operating system when the page hasn't opted out with an explicit
+   [data-theme] choice. Set data-theme="light" (or "dark") on <html> to override.
+   Mirror of the palette above — keep the two in step. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']):not([data-theme='dark']) {
+        color-scheme: dark;
+        --background: #1d2d3d;
+        --foreground: #f2f2f3;
+        --surface: #2c455d;
+        --card: #1d2d3d;
+        --card-foreground: #f2f2f3;
+        --popover: #2c455d;
+        --popover-foreground: #f2f2f3;
+        --primary: #5980a6;
+        --primary-foreground: #f2f2f3;
+        --secondary: #2c455d;
+        --secondary-foreground: #f2f2f3;
+        --muted: #2c455d;
+        --muted-foreground: #9ebbd8;
+        --accent: #2c455d;
+        --accent-foreground: #f2f2f3;
+        --destructive: #b5d9fd;
+        --destructive-foreground: #1d2d3d;
+        --border: #34465a;
+        --input: #34465a;
+        --ring: #749dc4;
+        --sidebar: #1d2d3d;
+        --sidebar-foreground: #f2f2f3;
+        --sidebar-primary: #5980a6;
+        --sidebar-primary-foreground: #f2f2f3;
+        --sidebar-accent: #2c455d;
+        --sidebar-accent-foreground: #f2f2f3;
+        --sidebar-border: #34465a;
+        --sidebar-ring: #749dc4;
+    }
 }
 
 /* Map Tailwind's token names onto the vars above so utilities

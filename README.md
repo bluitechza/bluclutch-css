@@ -102,7 +102,7 @@ Pull only what you need:
 
 ## Tokens
 
-Colours are CSS custom properties on `:root` (light) and `.dark` (the internal shell), mapped onto Tailwind's names via `@theme inline`.
+Colours are CSS custom properties on `:root` (light), `[data-theme="dark"]` (user-facing [dark mode](#dark-mode)) and `.dark` (the internal shell), mapped onto Tailwind's names via `@theme inline`.
 
 | Token | Light | Meaning |
 | --- | --- | --- |
@@ -265,9 +265,21 @@ The **journey stepper** — mark stages `--done` / `--current`:
 
 ---
 
+## Dark mode
+
+A user-facing light/dark toggle. Set `data-theme` on `<html>`; with no attribute the system follows the OS via `prefers-color-scheme`:
+
+```html
+<html data-theme="dark"> … </html>   <!-- force dark -->
+<html data-theme="light"> … </html>  <!-- force light (opt out of the OS preference) -->
+<html> … </html>                     <!-- no attribute → follow the OS -->
+```
+
+Every component reads from the tokens, so the whole system flips with the ground. Dark mode reuses the accent-900 palette — still monochrome, no new hues. The demo ships a working **Light / Dark / Auto** switcher, and [theming](./docs/theming.md#dark-mode) shows how to persist the choice without a flash.
+
 ## The dark shell
 
-`.dark` is **not** a user-facing light/dark toggle. It's the internal / application shell: wrap a BluClutch-staff layout in `.dark` to render it on the accent-900 ground — the cue that a screen belongs to staff, not to a school.
+`.dark` is a separate concept from the `data-theme` toggle above — **not** a user-facing light/dark switch. It's the internal / application shell: wrap a BluClutch-staff layout in `.dark` to render it on the accent-900 ground — the cue that a screen belongs to staff, not to a school.
 
 ```html
 <div class="dark" style="background: var(--background); color: var(--foreground)">

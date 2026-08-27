@@ -3,6 +3,18 @@
 All notable changes to `bluclutch-css` are documented here. Format loosely
 follows [Keep a Changelog](https://keepachangelog.com); versions follow semver.
 
+## [0.3.0] — 2026-08-27
+
+### Added
+- **Dark mode:** a user-facing light/dark toggle via `[data-theme="dark"]` on any scope, plus automatic `prefers-color-scheme` follow when no `data-theme` is set (`data-theme="light"` opts out). Reuses the accent-900 palette, so it stays monochrome. The dark triggers also set `color-scheme` so native controls match. The demo gains a **Light / Dark / Auto** switcher (built from `.segmented`) with anti-flash persistence; `docs/theming.md` documents wiring a toggle.
+
+### Fixed
+- Demo "Growth" card tinted its background with the fixed ramp step `--accent-100`, which doesn't flip for dark mode — content became unreadable on the dark ground. Switched it to the theme-aware `--accent` / `--accent-foreground` pair.
+
+### Note
+- `.dark` (the internal / staff application shell) is unchanged and remains a separate concept from the new `data-theme` toggle — it just shares the same accent-900 palette.
+- The `--accent-100…900` ramp holds **fixed** brand colours across themes (they're for data-viz). For a tinted surface that should adapt to light/dark, use the semantic `--accent` / `--accent-foreground` tokens, not a raw ramp step.
+
 ## [0.2.0] — 2026-08-26
 
 ### Added

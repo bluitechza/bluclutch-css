@@ -35,9 +35,52 @@ See [`src/branding.css`](../src/branding.css).
 
 > Keep contrast in mind: a school's colour still needs paper-white text to read on `--primary`. Very light brand colours should carry dark text — expose an option rather than assuming white.
 
+## Dark mode
+
+A user-facing light/dark toggle. Set `data-theme` on the `<html>` element (or any scope you want re-themed):
+
+```html
+<html data-theme="dark"> … </html>   <!-- force dark -->
+<html data-theme="light"> … </html>  <!-- force light -->
+<html> … </html>                     <!-- no attribute → follow the OS -->
+```
+
+With **no** `data-theme` attribute the system follows the operating system's `prefers-color-scheme`. `data-theme="light"` and `data-theme="dark"` are explicit overrides that opt out of the OS preference — set `data-theme="light"` if you want a screen to stay light regardless of the visitor's OS.
+
+Everything reads from the same tokens, so the whole system — the blueprint frame, buttons, tags, stepper — flips with the ground. Dark mode reuses the accent-900 palette (see below); it stays monochrome, no new hues.
+
+### Wiring a toggle
+
+Persist the choice and apply it before first paint to avoid a flash of the wrong theme:
+
+```html
+<!-- in <head>, before your stylesheet -->
+<script>
+  var t = localStorage.getItem('bcc-theme');
+  if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+</script>
+```
+
+```js
+// in your toggle handler — 'auto' clears the attribute so CSS follows the OS again
+function setTheme(choice) {
+  if (choice === 'auto') {
+    delete document.documentElement.dataset.theme;
+    localStorage.removeItem('bcc-theme');
+  } else {
+    document.documentElement.dataset.theme = choice;   // 'light' | 'dark'
+    localStorage.setItem('bcc-theme', choice);
+  }
+}
+```
+
+The demo (`demo/index.html`) has a working Light / Dark / Auto switcher built from the `.segmented` component.
+
+> **Native controls:** the dark tokens also set `color-scheme`, so scrollbars, form widgets and the like adopt the matching platform styling automatically.
+
 ## The dark internal shell
 
-`.dark` is **not** a user-facing light/dark toggle. It's the internal / application shell: wrap a BluClutch-staff layout in `.dark` to render it on the accent-900 ground — the cue that a screen belongs to staff, not to a school.
+`.dark` is a separate concept from the `data-theme` toggle above — **not** a user-facing light/dark switch. It's the internal / application shell: wrap a BluClutch-staff layout in `.dark` to render it on the accent-900 ground — the cue that a screen belongs to staff, not to a school. (It happens to share dark mode's accent-900 palette, so a `.dark` region reads the same in either theme.)
 
 ```html
 <div class="dark" style="background:var(--background); color:var(--foreground)">
